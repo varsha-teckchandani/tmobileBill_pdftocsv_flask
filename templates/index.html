@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Files</title>
+</head>
+<body>
+<h1>Upload Files to Process</h1>
+<form action="{{ url_for('upload_files') }}" method="post" enctype="multipart/form-data">
+    <label for="files">Select files to upload:</label>
+    <input type="file" name="files" multiple><br><br>
+    <button type="submit">Upload Files</button>
+</form>
+
+{% if message %}
+<p>{{ message }}</p>
+<p>Processed files:</p>
+<ul>
+    {% for file in files %}
+    <li>{{ file }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+</body>
+</html>
